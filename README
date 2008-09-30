@@ -1,0 +1,25 @@
+This library allows for defining class-level attributes whose values:
+  * are inherited by subclasses,
+  * can be overridden temporarily in threads without worrying about resetting to the original value,
+  * are memory efficient: they are swept if set to nil.
+
+Example usage:
+  class Resource
+    class_inheritable_attr_accessor :site
+  end
+  
+  class AccountingResource < Resource
+    self.site = "http://account.example.com"
+  end
+  
+  class Balance < AccountingResource
+  end
+  
+  # Child's value defaults to parent's
+  AccountingResource.site   # => "http://account.example.com"
+  Balance.site              # => "http://account.example.com"
+  
+  # Child can set its own value
+  Balance.site = "http://balance.account.example.com"
+  AccountingResource.site   # => "http://account.example.com"
+  Balance.site              # => "http://balance.account.example.com"
