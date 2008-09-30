@@ -1,7 +1,7 @@
 This library allows for defining class-level attributes whose values:
   * are inherited by subclasses,
   * can be overridden temporarily in threads without worrying about resetting to the original value,
-  * are memory efficient: they are swept if set to nil.
+  * are memory efficient: registry shrinks itself on nil values.
 
 Example usage:
   class Resource
