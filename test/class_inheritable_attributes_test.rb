@@ -24,14 +24,36 @@ class ClassInheritableAttributesTest < Test::Unit::TestCase
     @class.foo = :bar
     assert_equal :bar, child.foo
     
+    @class.foo = :bar
     child.foo = :other
     assert_equal :other, child.foo
     assert_equal :bar, @class.foo
     
+    # Setting a value to nil, in the main thread
+    @class.foo = :bar
+    child.foo = nil
+    assert_equal :bar, child.foo
+    assert_equal :bar, @class.foo
+    
+    # Setting a value that wasn't previously assigned to nil, in the main thread
+    @class.foo = :bar
+    other_child = Class.new(@class)
+    other_child.foo = nil
+    assert_equal :bar, other_child.foo
+    
+    # Setting a value to nil, in a separate thread
+    @class.foo = :bar
+    result = Thread.new { child.foo = nil; child.foo }.value
+    assert_equal :bar, result
+    
+    @class.foo = :bar
+    child.foo = :other
     assert_equal :in_thread, Thread.new { child.foo = :in_thread; child.foo }.value
     assert_equal :other, child.foo
     assert_equal :bar, @class.foo
     
+    @class.foo = :bar
+    child.foo = :other
     @class.foo = :changed
     assert_equal :other, child.foo
     assert_equal :changed, @class.foo

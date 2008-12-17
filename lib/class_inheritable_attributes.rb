@@ -19,7 +19,13 @@ module ClassInheritableAttributes
     
     def store_value(klass, attribute, value)
       if Thread.current == Thread.main
-        klass.instance_variable_set("@#{attribute}", value)
+        if value.nil?
+          klass.instance_eval do
+            remove_instance_variable("@#{attribute}") if instance_variable_defined?("@#{attribute}")
+          end
+        else
+          klass.instance_variable_set("@#{attribute}", value)
+        end
       else
         registry[klass] ||= {}
         if value.nil?
