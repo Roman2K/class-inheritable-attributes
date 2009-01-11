@@ -11,10 +11,6 @@ Allows for defining class-level attributes whose values are:
 * accessible via calls to `super`,
 * stored in a memory efficient manner (the registry shrinks itself on `nil` values).
 
-## Installation
-
-    gem install Roman2K-class-inheritable-attributes -s http://gems.github.com
-
 ## Example usage
 
     class Resource
