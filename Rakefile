@@ -1,6 +1,6 @@
 require "echoe"
 
-Echoe.new('class-inheritable-attributes', '0.1.0') do |p|
+Echoe.new('class-inheritable-attributes', '0.1.0.1') do |p|
   p.description     = "Thread-safe class inheritable attributes"
   p.url             = "https://github.com/Roman2K/class-inheritable-attributes"
   p.author          = "Roman Le Négrate"
