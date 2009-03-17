@@ -2,6 +2,10 @@
 
 [GitHub repository](https://github.com/Roman2K/class-inheritable-attributes).
 
+## Installation
+
+    $ gem install Roman2K-class-inheritable-attributes -s http://gems.github.com/
+
 ## Features
 
 Allows for defining class-level attributes whose values are:
@@ -13,6 +17,8 @@ Allows for defining class-level attributes whose values are:
 
 ## Example usage
 
+    require 'class_inheritable_attributes'
+    
     class Resource
       class_inheritable_attr_accessor :site, :timeout
     
