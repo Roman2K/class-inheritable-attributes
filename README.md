@@ -50,7 +50,3 @@ Allows for defining class-level attributes whose values are:
     Balance.site = "http://balance.account.example.com"
     AccountingResource.site   # => "http://account.example.com"
     Balance.site              # => "http://balance.account.example.com"
-
-## Credits
-
-Written by [Roman Le Négrate](http://roman.flucti.com) ([contact](mailto:roman.lenegrate@gmail.com)). Released under the MIT license: see the `LICENSE` file.
