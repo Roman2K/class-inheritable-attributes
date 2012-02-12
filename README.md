@@ -1,19 +1,11 @@
 # Thread-safe class inheritable attributes
 
-[GitHub repository](https://github.com/Roman2K/class-inheritable-attributes).
-
-## Features
-
 Allows for defining class-level attributes whose values are:
 
 * inherited by subclasses,
 * stored in a thread safe manner,
 * accessible via calls to `super`,
 * stored in a memory efficient manner (the registry shrinks itself on `nil` values).
-
-## Installation
-
-    $ gem install Roman2K-class-inheritable-attributes -s http://gems.github.com/
 
 ## Example usage
 
